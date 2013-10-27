@@ -7,7 +7,7 @@
 #include "app_debug.h"
 
 /* NOTICE: 'DEVNAME' depends on your execution environment, 
-   so you must changed the name as your environment. 
+   so you must change the name as your environment. 
    You can confirm the attached device name with 'dmesg' on standard linux OS.
 */
 #define DEVNAME "/dev/ttyUSB0"
@@ -35,7 +35,7 @@ SensorReaderProc(struct ev_loop* loop, ev_periodic* in_arg, int in_revents) {
   nread = TSensorReader_ReadData(&sSensorReader, buf, sizeof(buf));
   APP_LOG_DEBUG("%d bytes data read.", nread);
   if (nread > 0) {
-    /*! \todo You can parse read data here or push data to buffer, for example circular buffer.
+    /*! \todo You can parse read data here or push data to some buffer, for example circular buffer.
      * Tentatively we dump data read via serial for debugging. 
      */
     DumpSerialData(buf, nread);
