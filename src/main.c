@@ -36,7 +36,7 @@ SensorReaderProc(struct ev_loop* loop, ev_periodic* in_arg, int in_revents) {
   APP_LOG_DEBUG("%d bytes data read.", nread);
   if (nread > 0) {
     /*! \todo You can parse read data here or push data to some buffer, for example circular buffer.
-     * Tentatively we dump data read via serial for debugging. 
+     * Tentatively we dump data for debugging. 
      */
     DumpSerialData(buf, nread);
   }
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* We use 'libev' for message loop to poll serial every 'SENSOR_READER_DEFAULT_TIMER_INTERVAL' seconds and read data.
-   * This is because polling is so simple.
+   * This is because polling way is so simple.
    */
   loop = ev_default_loop(0);
   ev_periodic_init(&reader_timer, SensorReaderProc, 0, (ev_tstamp)SENSOR_READER_DEFAULT_TIMER_INTERVAL, 0);
